@@ -1,0 +1,88 @@
+<?- include('../../header.html') ?>
+<?- include('../../aside.html') ?>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Admin Account</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Blank Page</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <section class="content-acction">
+    <div class="row">
+        <div class="ml-5 col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <form action="/admin/tours/" method="POST" role="form">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <button type="submit" class="input-group-text" id="basic-addon3"> SEARCH </button>
+                </div>
+                <input type="text" class="form-control" value="<?= search ?>" name="search" id="basic-url" aria-describedby="basic-addon3">
+            </div>
+        </form>
+    </div>
+</section>
+<!-- Main content -->
+<section class="content">
+    <!-- Default box -->
+
+    <div class="card">
+        <div class="card-body">
+
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <? account.forEach(function(acc){ ?>
+                    <tr>
+                        <td>
+                            <?= acc.id ?>
+                        </td>
+                        <td>
+                            <?= acc.name ?>
+                        </td>
+                        <td>
+                            <?= acc.email ?>
+                        </td>
+                        <td>
+                            <?= acc.role ?>
+                        </td>
+                        <td>
+                            <a href="/admin/account/update/<?= acc.id ?>" class="btn btn-sm btn-primary">Sửa</a>
+                            <a href="/admin/account/delete/<?= acc.id ?>" class="btn  btn-sm btn-danger">Xóa</a>
+                        </td>
+                    </tr>
+                    <? }) ?>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- /.card-body -->
+        <div class="card-footer">
+            <?- pagination?>
+  </div>
+  <!-- /.card-footer-->
+</div>
+<!-- /.card -->
+</section>
+<!-- /.content -->
+</div>
+<?- include('../../footer.html') ?>

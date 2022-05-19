@@ -1,0 +1,82 @@
+<?- include('../../header.html') ?>
+<?- include('../../aside.html') ?>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Create Account</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Blank Page</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-body">
+                <form class="form-horizontal" method="POST">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6
+                            col-lg-6">
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" name="name" placeholder="name...." value="<?= (typeof account !== 'undefined') ? account.name : '' ?>">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Password</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="password" name="password" placeholder="Password...." value="<?= (typeof account !== 'undefined') ? account.password : '' ?>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6
+                        col-lg-6">
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="email" name="email" placeholder="Email...." value="<?= (typeof account !== 'undefined') ? account.email : '' ?>">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="exampleFormControlSelect1" class="col-sm-2 col-form-label">Role select</label>
+                            <select class="form-control col-sm-10" name="role" id="exampleFormControlSelect1">
+                            <option value="" selected disabled="">choose Role...</option>
+                            <option value="admin" <?=( typeof account !== 'undefined' && account.role == "admin" ) ? 'selected' : ''?>>Admin</option>
+                            <option value="customer" <?=( typeof account !== 'undefined' && account.role == "customer" ) ? 'selected' : ''?>>Customer</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- /.card-body -->
+        <div class="card-footer text-center">
+            <button type="submit" class="btn btn-info"><i
+                class="fas fa-save"></i> Save</button>
+                <button type="reset" class="btn btn-danger"><i
+                    class="fas fa-remove"></i> Refresh</button>
+                </div>
+                <!-- /.card-footer -->
+                <!-- /.card-footer -->
+            </form>
+        </div>
+    </div>
+    <!-- /.card -->
+</section>
+<!-- /.content -->
+</div>
+<?- include('../../footer.html') ?>

@@ -1,0 +1,122 @@
+<?- include('../../header.html') ?>
+<?- include('../../aside.html') ?>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Create Tours</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Blank Page</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <!-- Default box -->
+
+        <div class="card">
+            <div class="card-body">
+                <form class="form-horizontal" enctype="multipart/form-data"  method="POST">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" name="name" placeholder="name...." value="<?= (typeof tours !== 'undefined') ? tours.name : '' ?>">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Price</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" name="price" placeholder="Price...." value="<?= (typeof tours !== 'undefined') ? tours.price : '' ?>">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-2 col-form-label">sale_price</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" name="sale_price" placeholder="sale_price...." value="<?= (typeof tours !== 'undefined') ? tours.sale_price : '' ?>">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Description</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" name="description" placeholder="Description...." value="<?= (typeof tours !== 'undefined') ? tours.description : '' ?>">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="exampleFormControlSelect1" class="col-sm-2 col-form-label">Category select</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" name="category_id" id="exampleFormControlSelect1">
+                                          <option value="" selected disabled="">choose Category...</option>
+                                          <? category.forEach(function (acc) { ?>
+                                          <option value="<?= acc.id?>" <?=( typeof tours !=='undefined' && tours.category_id == acc.id ) ? 'selected' : ''?>><?= acc.name?></option>
+                                          <?})?>
+                                      </select>
+                                  </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-3 col-form-label">Status</label>
+                                <div class="col-sm-9  d-flex">
+                                    <div class="form-check mr-3">
+                                        <input type="radio" class="form-check-input" name="status" id="status1" value="1" checked >
+                                        <label class="form-check-label" for="status1">Ẩn</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="radio" class="form-check-input" name="status" id="status2" value="2" <?=( typeof tours !=='undefined' && tours.status==2 ) ? 'checked' : ''?>>
+                                        <label class="form-check-label" for="status2">Hiện</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-3 col-form-label">Image</label>
+                                <div class="col-sm-9">
+                                    <input type="file" class="inputimage" id="inputimage" name="image" value="<?= (typeof tours !== 'undefined') ? tours.image : '' ?>"/>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer text-center">
+                            <button type="submit" class="btn btn-info"><i class="fas fa-save"></i> Save</button>
+                            <button type="reset" class="btn btn-danger"><i class="fas fa-remove"></i> Refresh</button>
+                        </div>
+                        <!-- /.card-footer -->
+                        <!-- /.card-footer -->
+                    </form>
+                </div>
+
+            </div>
+            <!-- /.card -->
+        </section>
+        <!-- /.content -->
+    </div>
+    
+    <? if (typeof tours !== 'undefined') { ?>
+
+    <script>
+
+        var fileName =  "../../../uploads/" + "<?= tours.image ?>";
+
+        var head = document.getElementsByTagName("head");
+        var style = document.createElement("style");
+        style.innerHTML = '.inputimage:before {background-image: url("'+fileName+'");}';
+        head[0].appendChild(style);
+
+    </script>
+
+    <? }?>
+
+
+    <?- include('../../footer.html') ?>
