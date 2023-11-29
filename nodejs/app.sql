@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS account (
   password VARCHAR(100) NOT NULL,
   role VARCHAR(50) NOT NULL DEFAULT 'customer',
   creaed_at date DEFAULT current_timestamp,
-  last_login datetime DEFAULT current_timestamp(),
+  last_login datetime DEFAULT current_timestamp()
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS category (
